@@ -1,0 +1,21 @@
+{
+  "name": "nexus-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Ben Halverson <benhalverson33@gmail.com> (http://benhalverson.me/)",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server": "3.3.0",
+    "graphql": "15.5.3",
+    "nexus": "1.1.0"
+  },
+  "devDependencies": {
+    "ts-node-dev": "1.1.8",
+    "typescript": "4.4.2"
+  }
+}
