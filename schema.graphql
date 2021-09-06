@@ -2,9 +2,15 @@
 ### Do not make changes to this file directly
 
 
+type Mutation {
+  createDraft: Post!
+}
+
 type Post {
   body: String
   id: Int
+  posts: [Post]
+  publish(draftId: Int!): Post
   published: Boolean
   title: String
 }

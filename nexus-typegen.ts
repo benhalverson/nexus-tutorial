@@ -4,7 +4,7 @@
  */
 
 
-
+import type { Context } from "./api/context"
 
 
 
@@ -28,6 +28,7 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  Mutation: {};
   Post: { // root type
     body?: string | null; // String
     id?: number | null; // Int
@@ -48,9 +49,14 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  Mutation: { // field return type
+    createDraft: NexusGenRootTypes['Post']; // Post!
+  }
   Post: { // field return type
     body: string | null; // String
     id: number | null; // Int
+    posts: Array<NexusGenRootTypes['Post'] | null> | null; // [Post]
+    publish: NexusGenRootTypes['Post'] | null; // Post
     published: boolean | null; // Boolean
     title: string | null; // String
   }
@@ -60,9 +66,14 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenFieldTypeNames {
+  Mutation: { // field return type name
+    createDraft: 'Post'
+  }
   Post: { // field return type name
     body: 'String'
     id: 'Int'
+    posts: 'Post'
+    publish: 'Post'
     published: 'Boolean'
     title: 'String'
   }
@@ -72,6 +83,11 @@ export interface NexusGenFieldTypeNames {
 }
 
 export interface NexusGenArgTypes {
+  Post: {
+    publish: { // args
+      draftId: number; // Int!
+    }
+  }
 }
 
 export interface NexusGenAbstractTypeMembers {
@@ -105,7 +121,7 @@ export type NexusGenFeaturesConfig = {
 }
 
 export interface NexusGenTypes {
-  context: any;
+  context: Context;
   inputTypes: NexusGenInputs;
   rootTypes: NexusGenRootTypes;
   inputTypeShapes: NexusGenInputs & NexusGenEnums & NexusGenScalars;

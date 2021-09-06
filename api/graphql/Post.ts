@@ -1,4 +1,4 @@
-import { extendType, objectType } from 'nexus';
+import { extendType, intArg, nonNull, objectType } from 'nexus';
 
 export const Post = objectType({
   name: 'Post',
@@ -7,6 +7,28 @@ export const Post = objectType({
     t.string('title');
     t.string('body');
     t.boolean('published');
+    t.list.field('posts', {
+      type: 'Post',
+      resolve(_root, _args, ctx) {
+        return ctx.db.posts.filter((post) => post.published === true);
+      },
+    });
+    t.field('publish', {
+      type: 'Post',
+      args: {
+        draftId: nonNull(intArg()),
+      },
+      resolve(_root, args, ctx) {
+        let draftToPublish = ctx.db.posts.find(
+          (post) => post.id === args.draftId
+        );
+        if (!draftToPublish) {
+          throw new Error(`No draft with id ${args.draftId}`);
+        }
+        draftToPublish.published = true;
+        return draftToPublish;
+      },
+    });
   },
 });
 
@@ -15,15 +37,27 @@ export const PostQuery = extendType({
   definition(t) {
     t.nonNull.list.field('drafts', {
       type: 'Post',
-      resolve() {
-        return [
-          {
-            id: 1,
-            title: 'Hello',
-            body: 'World',
-            published: false,
-          },
-        ];
+      resolve(_root, _args, ctx) {
+        return ctx.db.posts.filter((post) => post.published === false);
+      },
+    });
+  },
+});
+
+export const PostMutation = extendType({
+  type: 'Mutation',
+  definition(t) {
+    t.nonNull.field('createDraft', {
+      type: 'Post',
+      resolve(_root, _args, ctx) {
+        const drafts = {
+          id: ctx.db.posts.length + 1,
+          title: 'New Post',
+          body: '',
+          published: false,
+        };
+        ctx.db.posts.push(drafts);
+        return drafts;
       },
     });
   },
