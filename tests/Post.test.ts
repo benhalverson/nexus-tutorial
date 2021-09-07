@@ -13,7 +13,16 @@ it('ensures that a draft can be created and published', async () => {
       }
     }
   `);
-  expect(draftResult).toMatchInlineSnapshot();
+  expect(draftResult).toMatchInlineSnapshot(`
+Object {
+  "createDraft": Object {
+    "body": "...",
+    "id": 1,
+    "published": false,
+    "title": "Nexus",
+  },
+}
+`);
   // publish the draft
   const publishResult = await ctx.client.request(
     `
@@ -29,5 +38,14 @@ it('ensures that a draft can be created and published', async () => {
     { draftId: draftResult.createDraft.id }
   );
   // Snapshot the published draft and expect `published` to be true
-  expect(publishResult).toMatchInlineSnapshot();
+  expect(publishResult).toMatchInlineSnapshot(`
+Object {
+  "publish": Object {
+    "body": "...",
+    "id": 1,
+    "published": true,
+    "title": "Nexus",
+  },
+}
+`);
 });

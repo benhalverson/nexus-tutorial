@@ -1,4 +1,4 @@
-import { extendType, intArg, nonNull, objectType } from 'nexus';
+import { extendType, intArg, nonNull, objectType, stringArg } from 'nexus';
 
 export const Post = objectType({
   name: 'Post',
@@ -49,15 +49,33 @@ export const PostMutation = extendType({
   definition(t) {
     t.nonNull.field('createDraft', {
       type: 'Post',
-      resolve(_root, _args, ctx) {
-        const drafts = {
+      args: {
+        title: nonNull(stringArg()),
+        body: nonNull(stringArg()),
+      },
+      resolve(_root, args, ctx) {
+        const draft = {
           id: ctx.db.posts.length + 1,
-          title: 'New Post',
-          body: '',
+          title: args.title,
+          body: args.body,
           published: false,
         };
-        ctx.db.posts.push(drafts);
-        return drafts;
+        ctx.db.posts.push(draft);
+        return draft;
+      },
+    });
+    t.field('publish', {
+      type: 'Post',
+      args: {
+        draftId: nonNull(intArg()),
+      },
+      resolve(_root, args, ctx) {
+        let draftToPublish = ctx.db.posts.find((p) => p.id === args.draftId);
+        if (!draftToPublish) {
+          throw new Error(`No draft with id ${args.draftId}`);
+        }
+        draftToPublish.published = true;
+        return draftToPublish;
       },
     });
   },

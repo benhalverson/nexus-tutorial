@@ -3,7 +3,8 @@
 
 
 type Mutation {
-  createDraft: Post!
+  createDraft(body: String!, title: String!): Post!
+  publish(draftId: Int!): Post
 }
 
 type Post {
