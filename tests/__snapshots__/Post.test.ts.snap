@@ -1,0 +1,226 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ensures that a draft can be created and published 1`] = `
+Object {
+  "createDraft": Object {
+    "body": "...",
+    "id": 33,
+    "published": false,
+    "title": "Nexus",
+  },
+}
+`;
+
+exports[`ensures that a draft can be created and published 2`] = `
+Object {
+  "publish": Object {
+    "body": "...",
+    "id": 33,
+    "published": true,
+    "title": "Nexus",
+  },
+}
+`;
+
+exports[`ensures that a draft can be created and published 3`] = `
+Array [
+  Object {
+    "body": "...",
+    "id": 1,
+    "published": false,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 2,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 3,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 4,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 5,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 6,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 7,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 8,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 9,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 10,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 11,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 12,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 13,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 14,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 15,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 16,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 17,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 18,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 19,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 20,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 21,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 22,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 23,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 24,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 25,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 26,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 27,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 28,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 29,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 30,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 31,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 32,
+    "published": true,
+    "title": "Nexus",
+  },
+  Object {
+    "body": "...",
+    "id": 33,
+    "published": true,
+    "title": "Nexus",
+  },
+]
+`;

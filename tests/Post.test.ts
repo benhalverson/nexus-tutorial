@@ -13,16 +13,8 @@ it('ensures that a draft can be created and published', async () => {
       }
     }
   `);
-  expect(draftResult).toMatchInlineSnapshot(`
-Object {
-  "createDraft": Object {
-    "body": "...",
-    "id": 1,
-    "published": false,
-    "title": "Nexus",
-  },
-}
-`);
+  expect(draftResult).toMatchSnapshot();
+
   // publish the draft
   const publishResult = await ctx.client.request(
     `
@@ -37,15 +29,9 @@ Object {
   `,
     { draftId: draftResult.createDraft.id }
   );
-  // Snapshot the published draft and expect `published` to be true
-  expect(publishResult).toMatchInlineSnapshot(`
-Object {
-  "publish": Object {
-    "body": "...",
-    "id": 1,
-    "published": true,
-    "title": "Nexus",
-  },
-}
-`);
+
+  expect(publishResult).toMatchSnapshot();
+
+  const persistedData = await ctx.db.post.findMany();
+  expect(persistedData).toMatchSnapshot();
 });
